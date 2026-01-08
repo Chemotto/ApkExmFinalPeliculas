@@ -28,11 +28,13 @@ class MovieAdapter(
             binding.tvTitle.text = movie.title ?: "Sin título"
             binding.tvYear.text = movie.year ?: "Sin año"
             
-            // Usando Coil para cargar la imagen
-            binding.ivPoster.load(movie.poster) {
+            // Gestión de póster: OMDb devuelve "N/A" si no hay imagen
+            val posterUrl = if (movie.poster != null && movie.poster != "N/A") movie.poster else null
+            
+            binding.ivPoster.load(posterUrl) {
                 crossfade(true)
-                placeholder(android.R.drawable.progress_horizontal) // Opcional
-                error(android.R.drawable.ic_menu_report_image) // Opcional
+                placeholder(android.R.drawable.ic_menu_gallery)
+                error(android.R.drawable.ic_menu_report_image)
             }
 
             binding.root.setOnClickListener {
