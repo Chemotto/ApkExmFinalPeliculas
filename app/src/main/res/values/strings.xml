@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ApkExmFinalPeliculas</string>
+    <string name="app_title">Buscador de Películas</string>
+    <string name="search_hint">Título de la película</string>
+    <string name="search_button">Buscar</string>
+    <string name="back_button">Volver</string>
+    <string name="title_label">Título</string>
+    <string name="year_label">Año</string>
+    <string name="plot_label">Sinopsis</string>
+    <string name="runtime_label">Duración</string>
+    <string name="director_label">Director</string>
+    <string name="genre_label">Género</string>
+    <string name="country_label">País</string>
 </resources>
