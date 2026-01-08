@@ -3,7 +3,7 @@ package com.chema.apkexmfinalpeliculas
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import com.chema.apkexmfinalpeliculas.databinding.ItemMovieBinding
 
 class MovieAdapter(
@@ -27,9 +27,13 @@ class MovieAdapter(
         fun bind(movie: Movie) {
             binding.tvTitle.text = movie.title ?: "Sin título"
             binding.tvYear.text = movie.year ?: "Sin año"
-            Glide.with(binding.root.context)
-                .load(movie.poster)
-                .into(binding.ivPoster)
+            
+            // Usando Coil para cargar la imagen
+            binding.ivPoster.load(movie.poster) {
+                crossfade(true)
+                placeholder(android.R.drawable.progress_horizontal) // Opcional
+                error(android.R.drawable.ic_menu_report_image) // Opcional
+            }
 
             binding.root.setOnClickListener {
                 movie.imdbId?.let { id -> onMovieClick(id) }

@@ -3,7 +3,7 @@ package com.chema.apkexmfinalpeliculas
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import coil.load
 import com.chema.apkexmfinalpeliculas.databinding.ActivityDetailBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,9 +64,10 @@ class DetailActivity : AppCompatActivity() {
         binding.tvDetailCountry.text = movie.country ?: "N/A"
 
         if (!movie.poster.isNullOrEmpty() && movie.poster != "N/A") {
-            Glide.with(this)
-                .load(movie.poster)
-                .into(binding.ivPosterDetail)
+            // Usando Coil para cargar la imagen en el detalle
+            binding.ivPosterDetail.load(movie.poster) {
+                crossfade(true)
+            }
         }
     }
 }
